@@ -15,7 +15,9 @@ export default async function CartPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight text-white">Your cart</h1>
+      <h1 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
+        Your cart
+      </h1>
       <CartView
         items={items.map((i) => ({
           id: i.id,

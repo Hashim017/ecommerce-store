@@ -58,12 +58,14 @@ export default function CartView({ items }: { items: CartLine[] }) {
   if (items.length === 0) {
     return (
       <div className="card flex flex-col items-center gap-4 py-20 text-center">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-indigo-400/15 text-indigo-300">
-          <ShoppingBag size={26} />
+        <span className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-ink bg-lilac">
+          <ShoppingBag size={28} />
         </span>
         <div>
-          <h2 className="text-xl font-semibold text-white">Your cart is empty</h2>
-          <p className="mt-1 text-sm text-slate-400">
+          <h2 className="font-display text-2xl font-extrabold">
+            Your cart is empty
+          </h2>
+          <p className="mt-1 text-sm text-ink/60">
             Add something you like and it will show here.
           </p>
         </div>
@@ -78,19 +80,19 @@ export default function CartView({ items }: { items: CartLine[] }) {
     <div className="grid gap-6 lg:grid-cols-3">
       <div className="space-y-4 lg:col-span-2">
         {error && (
-          <p className="rounded-lg bg-rose-500/10 px-3 py-2 text-sm text-rose-300">
+          <p className="rounded-xl border-2 border-ink bg-coral/15 px-3 py-2 text-sm font-semibold text-red-700">
             {error}
           </p>
         )}
 
-        <ul className="card divide-y divide-white/5">
+        <ul className="card divide-y-2 divide-ink/10">
           {items.map((i) => (
             <li key={i.id} className="flex gap-4 p-4">
               <Link href={`/products/${i.slug}`} className="shrink-0">
                 <img
                   src={i.imageUrl}
                   alt={i.name}
-                  className="h-20 w-20 rounded-lg object-cover"
+                  className="h-24 w-24 rounded-xl border-2 border-ink object-cover"
                 />
               </Link>
 
@@ -99,42 +101,42 @@ export default function CartView({ items }: { items: CartLine[] }) {
                   <div className="min-w-0">
                     <Link
                       href={`/products/${i.slug}`}
-                      className="line-clamp-1 font-medium text-slate-100 hover:text-white"
+                      className="font-display line-clamp-1 text-lg font-bold hover:text-coral"
                     >
                       {i.name}
                     </Link>
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-ink/60">
                       {formatPrice(i.price)} each
                     </p>
                     {i.quantity >= i.stock && (
-                      <p className="text-xs text-amber-300">
+                      <p className="text-xs font-semibold text-amber-700">
                         Only {i.stock} in stock
                       </p>
                     )}
                   </div>
-                  <p className="font-semibold text-white">
+                  <p className="font-display text-lg font-extrabold">
                     {formatPrice(i.price * i.quantity)}
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1 rounded-lg bg-white/5 p-1">
+                  <div className="flex items-center gap-1 rounded-full border-2 border-ink bg-white p-1">
                     <button
                       onClick={() => setQuantity(i.id, i.quantity - 1)}
                       disabled={i.quantity <= 1 || busyId === i.id}
                       aria-label="Decrease quantity"
-                      className="rounded-md p-1.5 text-slate-300 hover:bg-white/10 disabled:opacity-40"
+                      className="rounded-full p-1.5 transition hover:bg-sun disabled:opacity-30"
                     >
                       <Minus size={14} />
                     </button>
-                    <span className="w-8 text-center text-sm font-medium text-white">
+                    <span className="w-8 text-center text-sm font-bold">
                       {i.quantity}
                     </span>
                     <button
                       onClick={() => setQuantity(i.id, i.quantity + 1)}
                       disabled={i.quantity >= i.stock || busyId === i.id}
                       aria-label="Increase quantity"
-                      className="rounded-md p-1.5 text-slate-300 hover:bg-white/10 disabled:opacity-40"
+                      className="rounded-full p-1.5 transition hover:bg-sun disabled:opacity-30"
                     >
                       <Plus size={14} />
                     </button>
@@ -144,9 +146,9 @@ export default function CartView({ items }: { items: CartLine[] }) {
                     onClick={() => remove(i.id)}
                     disabled={busyId === i.id}
                     aria-label="Remove item"
-                    className="rounded-lg p-2 text-slate-500 hover:bg-white/10 hover:text-rose-300"
+                    className="rounded-full p-2 text-ink/50 transition hover:bg-coral/15 hover:text-red-600"
                   >
-                    <Trash2 size={16} />
+                    <Trash2 size={18} />
                   </button>
                 </div>
               </div>
@@ -155,26 +157,26 @@ export default function CartView({ items }: { items: CartLine[] }) {
         </ul>
       </div>
 
-      <aside className="card h-fit space-y-4 p-5">
-        <h2 className="font-semibold text-white">Order summary</h2>
-        <div className="space-y-2 text-sm">
-          <div className="flex justify-between text-slate-400">
+      <aside className="card h-fit space-y-4 bg-sun p-6">
+        <h2 className="font-display text-xl font-extrabold">Order summary</h2>
+        <div className="space-y-2 text-sm font-medium">
+          <div className="flex justify-between">
             <span>Items ({count})</span>
             <span>{formatPrice(total)}</span>
           </div>
-          <div className="flex justify-between text-slate-400">
+          <div className="flex justify-between">
             <span>Shipping</span>
-            <span className="text-emerald-300">Free</span>
+            <span className="font-bold">Free</span>
           </div>
         </div>
-        <div className="flex justify-between border-t border-white/10 pt-4 text-lg font-bold text-white">
+        <div className="font-display flex justify-between border-t-2 border-dashed border-ink pt-4 text-2xl font-extrabold">
           <span>Total</span>
           <span>{formatPrice(total)}</span>
         </div>
         <button disabled className="btn-primary w-full py-3">
           Checkout
         </button>
-        <p className="text-center text-xs text-slate-500">
+        <p className="text-center text-xs font-medium text-ink/60">
           Checkout starts working in Stage 5.
         </p>
       </aside>

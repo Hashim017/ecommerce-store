@@ -28,6 +28,8 @@ type FormState = {
   description: string;
 };
 
+const label = "mb-1 block text-sm font-bold";
+
 export default function AdminProducts({
   products,
   categories,
@@ -113,10 +115,10 @@ export default function AdminProducts({
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-white">
+          <h1 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
             Manage products
           </h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-ink/60">
             {products.length} products in your store.
           </p>
         </div>
@@ -125,36 +127,36 @@ export default function AdminProducts({
         </button>
       </div>
 
-      <ul className="card divide-y divide-white/5">
+      <ul className="card divide-y-2 divide-ink/10">
         {products.map((p) => (
           <li
             key={p.id}
-            className="flex items-center gap-3 px-4 py-3 hover:bg-white/[0.03]"
+            className="flex items-center gap-3 px-4 py-3 hover:bg-cream/60"
           >
             <img
               src={p.imageUrl}
               alt={p.name}
-              className="h-14 w-14 shrink-0 rounded-lg object-cover"
+              className="h-14 w-14 shrink-0 rounded-xl border-2 border-ink object-cover"
             />
             <div className="min-w-0 flex-1">
-              <p className="truncate font-medium text-slate-100">{p.name}</p>
-              <p className="truncate text-xs text-slate-500">
+              <p className="font-display truncate font-bold">{p.name}</p>
+              <p className="truncate text-xs text-ink/60">
                 {p.categoryName} · Stock: {p.stock}
               </p>
             </div>
-            <p className="font-semibold text-white">{formatPrice(p.price)}</p>
+            <p className="font-bold">{formatPrice(p.price)}</p>
             <div className="flex gap-1">
               <button
                 onClick={() => openEdit(p)}
                 aria-label="Edit"
-                className="rounded-lg p-2 text-slate-500 hover:bg-white/10 hover:text-indigo-300"
+                className="rounded-full p-2 transition hover:bg-sun"
               >
                 <Pencil size={16} />
               </button>
               <button
                 onClick={() => remove(p)}
                 aria-label="Delete"
-                className="rounded-lg p-2 text-slate-500 hover:bg-white/10 hover:text-rose-300"
+                className="rounded-full p-2 transition hover:bg-coral/20 hover:text-red-600"
               >
                 <Trash2 size={16} />
               </button>
@@ -164,32 +166,30 @@ export default function AdminProducts({
       </ul>
 
       {form && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink/60 p-4">
           <form
             onSubmit={(e) => {
               e.preventDefault();
               save();
             }}
-            className="my-8 w-full max-w-lg space-y-4 rounded-2xl border border-white/10 bg-slate-900 p-6 shadow-2xl"
+            className="card my-8 w-full max-w-lg space-y-4 bg-cream p-6"
           >
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-white">
+              <h3 className="font-display text-2xl font-extrabold">
                 {form.id ? "Edit product" : "Add product"}
               </h3>
               <button
                 type="button"
                 onClick={() => setForm(null)}
                 aria-label="Close"
-                className="rounded-lg p-1 text-slate-400 hover:bg-white/10"
+                className="rounded-full border-2 border-ink bg-white p-1.5 hover:bg-sun"
               >
-                <X size={18} />
+                <X size={16} />
               </button>
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">
-                Name
-              </label>
+              <label className={label}>Name</label>
               <input
                 required
                 maxLength={100}
@@ -201,9 +201,7 @@ export default function AdminProducts({
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="mb-1 block text-sm font-medium text-slate-300">
-                  Price
-                </label>
+                <label className={label}>Price</label>
                 <input
                   required
                   type="number"
@@ -215,9 +213,7 @@ export default function AdminProducts({
                 />
               </div>
               <div>
-                <label className="mb-1 block text-sm font-medium text-slate-300">
-                  Stock
-                </label>
+                <label className={label}>Stock</label>
                 <input
                   required
                   type="number"
@@ -231,9 +227,7 @@ export default function AdminProducts({
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">
-                Category
-              </label>
+              <label className={label}>Category</label>
               <select
                 required
                 value={form.categoryId}
@@ -243,7 +237,7 @@ export default function AdminProducts({
                 className="input"
               >
                 {categories.map((c) => (
-                  <option key={c.id} value={c.id} className="bg-slate-900">
+                  <option key={c.id} value={c.id}>
                     {c.name}
                   </option>
                 ))}
@@ -251,9 +245,7 @@ export default function AdminProducts({
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">
-                Image link, optional
-              </label>
+              <label className={label}>Image link, optional</label>
               <input
                 value={form.imageUrl}
                 onChange={(e) =>
@@ -262,15 +254,13 @@ export default function AdminProducts({
                 placeholder="https://..."
                 className="input"
               />
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-ink/50">
                 Leave empty to get a sample image.
               </p>
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">
-                Description
-              </label>
+              <label className={label}>Description</label>
               <textarea
                 required
                 rows={3}
@@ -284,7 +274,7 @@ export default function AdminProducts({
             </div>
 
             {error && (
-              <p className="rounded-lg bg-rose-500/10 px-3 py-2 text-sm text-rose-300">
+              <p className="rounded-xl border-2 border-ink bg-coral/15 px-3 py-2 text-sm font-semibold text-red-700">
                 {error}
               </p>
             )}
@@ -293,7 +283,7 @@ export default function AdminProducts({
               <button
                 type="button"
                 onClick={() => setForm(null)}
-                className="rounded-lg border border-white/10 px-4 py-2 text-sm font-medium text-slate-300 hover:bg-white/5"
+                className="btn-light"
               >
                 Cancel
               </button>

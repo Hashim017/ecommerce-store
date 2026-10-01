@@ -31,21 +31,19 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="flex min-h-[70vh] items-center justify-center">
+    <div className="flex min-h-[70vh] items-center justify-center py-6">
       <div className="card w-full max-w-md p-8">
         <div className="mb-6 flex flex-col items-center text-center">
-          <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 text-white shadow-lg shadow-indigo-900/50">
-            <Store size={22} />
+          <span className="mb-4 flex h-14 w-14 -rotate-6 items-center justify-center rounded-2xl border-2 border-ink bg-sun shadow-[3px_3px_0_#17151f]">
+            <Store size={26} />
           </span>
-          <h1 className="text-2xl font-bold text-white">Welcome back</h1>
-          <p className="mt-1 text-sm text-slate-400">Log in to your account.</p>
+          <h1 className="font-display text-3xl font-extrabold">Welcome back</h1>
+          <p className="mt-1 text-sm text-ink/60">Log in to your account.</p>
         </div>
 
         <form onSubmit={submit} className="space-y-4">
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">
-              Email
-            </label>
+            <label className="mb-1 block text-sm font-bold">Email</label>
             <input
               required
               type="email"
@@ -55,9 +53,7 @@ export default function LoginForm() {
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">
-              Password
-            </label>
+            <label className="mb-1 block text-sm font-bold">Password</label>
             <input
               required
               type="password"
@@ -68,17 +64,17 @@ export default function LoginForm() {
           </div>
 
           {error && (
-            <p className="rounded-lg bg-rose-500/10 px-3 py-2 text-sm text-rose-300">
+            <p className="rounded-xl border-2 border-ink bg-coral/15 px-3 py-2 text-sm font-semibold text-red-700">
               {error}
             </p>
           )}
 
-          <button type="submit" disabled={loading} className="btn-primary w-full">
+          <button type="submit" disabled={loading} className="btn-primary w-full py-3">
             {loading ? "Please wait..." : "Log in"}
           </button>
         </form>
 
-        <div className="mt-5 space-y-1 rounded-lg bg-white/5 px-3 py-2 text-center text-xs text-slate-400">
+        <div className="mt-5 space-y-1 rounded-xl border-2 border-dashed border-ink bg-mint/40 px-3 py-2 text-center text-xs font-medium">
           <p>Admin: admin@example.com / admin12345</p>
           <p>Customer: demo@example.com / password123</p>
         </div>

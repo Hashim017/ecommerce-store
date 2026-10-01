@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const display = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+});
+const body = DM_Sans({ subsets: ["latin"], variable: "--font-dm" });
 
 export const metadata: Metadata = {
   title: "ShopNest",
@@ -18,7 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex min-h-screen flex-col`}>
+      <body
+        className={`${display.variable} ${body.variable} flex min-h-screen flex-col`}
+      >
         <Navbar />
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">
           {children}

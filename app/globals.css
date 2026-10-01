@@ -1,21 +1,26 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    color-scheme: dark;
-  }
+@theme {
+  --color-cream: #fff7e8;
+  --color-ink: #17151f;
+  --color-coral: #ff5a3c;
+  --color-sun: #ffd23f;
+  --color-mint: #6ee7b7;
+  --color-lilac: #c9b6ff;
+  --color-powder: #9bdcff;
+}
 
+@layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: #0a0f1e;
-    background-image:
-      radial-gradient(60rem 30rem at 85% -10%, rgba(99, 102, 241, 0.25), transparent 60%),
-      radial-gradient(40rem 25rem at -10% 110%, rgba(16, 185, 129, 0.13), transparent 60%);
-    background-attachment: fixed;
-    color: #e2e8f0;
+    background-color: var(--color-cream);
+    background-image: radial-gradient(rgba(23, 21, 31, 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: var(--color-ink);
+    font-family: var(--font-dm), system-ui, sans-serif;
   }
 
   button {
@@ -24,54 +29,107 @@
 }
 
 @layer components {
+  .font-display {
+    font-family: var(--font-bricolage), system-ui, sans-serif;
+  }
+
   .card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 1rem;
-    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
+    background: #fff;
+    border: 2px solid var(--color-ink);
+    border-radius: 1.25rem;
+    box-shadow: 4px 4px 0 var(--color-ink);
+  }
+
+  .card-hover {
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .card-hover:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--color-ink);
   }
 
   .input {
     width: 100%;
-    border-radius: 0.6rem;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.05);
-    padding: 0.55rem 0.75rem;
-    font-size: 0.875rem;
-    color: #f1f5f9;
+    border: 2px solid var(--color-ink);
+    border-radius: 0.75rem;
+    background: #fff;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    color: var(--color-ink);
     outline: none;
   }
 
   .input:focus {
-    border-color: #818cf8;
-    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.25);
+    box-shadow: 3px 3px 0 var(--color-coral);
   }
 
   .input::placeholder {
-    color: #64748b;
+    color: #8a8794;
   }
 
-  .btn-primary {
+  .btn-primary,
+  .btn-light {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background-image: linear-gradient(135deg, #6366f1, #8b5cf6);
-    color: #fff;
-    font-weight: 500;
-    font-size: 0.875rem;
+    border: 2px solid var(--color-ink);
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 0.9rem;
     padding: 0.6rem 1.1rem;
-    border-radius: 0.6rem;
-    box-shadow: 0 8px 20px -8px rgba(99, 102, 241, 0.7);
-    transition: filter 0.15s;
+    box-shadow: 3px 3px 0 var(--color-ink);
+    transition: transform 0.12s, box-shadow 0.12s;
   }
 
-  .btn-primary:hover {
-    filter: brightness(1.12);
+  .btn-primary {
+    background: var(--color-coral);
+    color: #fff;
   }
 
-  .btn-primary:disabled {
+  .btn-light {
+    background: #fff;
+    color: var(--color-ink);
+  }
+
+  .btn-primary:hover:not(:disabled),
+  .btn-light:hover:not(:disabled) {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--color-ink);
+  }
+
+  .btn-primary:active:not(:disabled),
+  .btn-light:active:not(:disabled) {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--color-ink);
+  }
+
+  .btn-primary:disabled,
+  .btn-light:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
   }
 }

@@ -51,7 +51,7 @@ export default function AddToCartButton({
       <button
         onClick={add}
         disabled={soldOut || loading}
-        className="btn-primary px-6 py-3"
+        className="btn-primary w-full px-8 py-3.5 text-base sm:w-auto"
       >
         {added ? <Check size={18} /> : <ShoppingCart size={18} />}
         {soldOut
@@ -62,10 +62,12 @@ export default function AddToCartButton({
           ? "Added to cart"
           : "Add to cart"}
       </button>
-      {error && <p className="text-sm text-rose-300">{error}</p>}
+      {error && <p className="text-sm font-semibold text-red-600">{error}</p>}
       {!loggedIn && !soldOut && (
-        <p className="text-xs text-slate-500">Log in to add items to your cart.</p>
+        <p className="text-xs font-medium text-ink/50">
+          Log in to add items to your cart.
+        </p>
       )}
     </div>
   );
-}   
+}
