@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Store } from "lucide-react";
+import { Store, ShoppingCart } from "lucide-react";
+import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/currentUser";
 import LogoutButton from "@/components/LogoutButton";
 
@@ -8,6 +9,15 @@ const linkClass =
 
 export default async function Navbar() {
   const user = await getCurrentUser();
+
+  let cartCount = 0;
+  if (user) {
+    const sum = await prisma.cartItem.aggregate({
+      where: { userId: user.id },
+      _sum: { quantity: true },
+    });
+    cartCount = sum._sum.quantity ?? 0;
+  }
 
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950/70 backdrop-blur">
@@ -33,6 +43,16 @@ export default async function Navbar() {
               Admin
             </Link>
           )}
+
+          <Link href="/cart" aria-label="Cart" className={`relative ${linkClass}`}>
+            <ShoppingCart size={18} />
+            {cartCount > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-indigo-500 px-1 text-[11px] font-bold text-white">
+                {cartCount}
+              </span>
+            )}
+          </Link>
+
           {user ? (
             <LogoutButton />
           ) : (

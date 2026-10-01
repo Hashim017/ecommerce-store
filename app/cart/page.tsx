@@ -1,0 +1,32 @@
+import { prisma } from "@/lib/prisma";
+import { requireUser } from "@/lib/currentUser";
+import CartView from "@/components/CartView";
+
+export const dynamic = "force-dynamic";
+
+export default async function CartPage() {
+  const user = await requireUser();
+
+  const items = await prisma.cartItem.findMany({
+    where: { userId: user.id },
+    include: { product: true },
+    orderBy: { id: "asc" },
+  });
+
+  return (
+    <div className="space-y-6">
+      <h1 className="text-3xl font-bold tracking-tight text-white">Your cart</h1>
+      <CartView
+        items={items.map((i) => ({
+          id: i.id,
+          slug: i.product.slug,
+          name: i.product.name,
+          imageUrl: i.product.imageUrl,
+          price: Number(i.product.price),
+          quantity: i.quantity,
+          stock: i.product.stock,
+        }))}
+      />
+    </div>
+  );
+}

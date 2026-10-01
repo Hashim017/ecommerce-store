@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ShoppingCart } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import { getCurrentUser } from "@/lib/currentUser";
+import AddToCartButton from "@/components/AddToCartButton";
 import { prisma } from "@/lib/prisma";
 import { formatPrice } from "@/lib/format";
 
@@ -19,6 +21,8 @@ export default async function ProductPage({
   });
 
   if (!product) notFound();
+
+  const user = await getCurrentUser();
 
   const soldOut = product.stock === 0;
   const lowStock = product.stock > 0 && product.stock <= 5;
@@ -69,13 +73,11 @@ export default async function ProductPage({
             {product.description}
           </p>
 
-          <button disabled={soldOut} className="btn-primary px-6 py-3">
-            <ShoppingCart size={18} />
-            {soldOut ? "Sold out" : "Add to cart"}
-          </button>
-          <p className="text-xs text-slate-500">
-            The cart button starts working in Stage 4.
-          </p>
+                    <AddToCartButton
+            productId={product.id}
+            soldOut={soldOut}
+            loggedIn={!!user}
+          />
         </div>
       </div>
     </div>
