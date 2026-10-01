@@ -63,38 +63,47 @@ export default async function ProductsPage({
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   const chip = (active: boolean) =>
-    `rounded-full border-2 border-ink px-4 py-1.5 text-sm font-semibold transition ${
-      active ? "bg-ink text-cream" : "bg-white hover:bg-sun"
+    `rounded-full px-4 py-2 text-sm font-bold shadow transition hover:scale-105 ${
+      active
+        ? "bg-gradient-to-r from-grape to-coral text-white"
+        : "bg-white hover:bg-lilac/40"
     }`;
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <h1 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-          All products
-        </h1>
-        <span className="rounded-full border-2 border-ink bg-mint px-4 py-1 text-sm font-bold">
-          {total} {total === 1 ? "item" : "items"}
-        </span>
+      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#ede9fe] via-[#fce7f3] to-[#fef3c7] px-6 py-8">
+        <div className="float-slow absolute -right-6 -top-6 h-28 w-28 rounded-full bg-sun/60" />
+        <div className="float-slower absolute bottom-0 right-24 h-16 w-16 rounded-full bg-mint/70" />
+        <div className="relative flex flex-wrap items-end justify-between gap-3">
+          <h1 className="font-display text-4xl font-semibold sm:text-5xl">
+            All{" "}
+            <span className="bg-gradient-to-r from-grape via-coral to-sun bg-clip-text text-transparent">
+              products
+            </span>
+          </h1>
+          <span className="rounded-full bg-white px-4 py-1.5 text-sm font-bold text-grape shadow">
+            {total} {total === 1 ? "item" : "items"}
+          </span>
+        </div>
       </div>
 
       <form action="/products" className="relative">
         <Search
           size={18}
-          className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink/50"
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-grape"
         />
         <input
           name="q"
           defaultValue={q}
           placeholder="Search products"
-          className="input pl-10"
+          className="input rounded-full pl-11 shadow"
         />
         {category && <input type="hidden" name="category" value={category} />}
         {sort !== "newest" && <input type="hidden" name="sort" value={sort} />}
       </form>
 
       <div className="flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-sm font-bold text-ink/50">Category</span>
+        <span className="mr-1 text-sm font-bold text-grape">Category</span>
         <Link href={makeHref({ q, sort })} className={chip(!category)}>
           All
         </Link>
@@ -110,7 +119,7 @@ export default async function ProductsPage({
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-sm font-bold text-ink/50">Sort</span>
+        <span className="mr-1 text-sm font-bold text-grape">Sort</span>
         {(Object.keys(SORTS) as SortKey[]).map((key) => (
           <Link
             key={key}
@@ -127,7 +136,7 @@ export default async function ProductsPage({
       </div>
 
       {products.length === 0 ? (
-        <div className="card border-dashed bg-white py-16 text-center text-sm font-medium text-ink/60">
+        <div className="card bg-white py-16 text-center text-sm font-bold text-ink/60">
           No products found.
         </div>
       ) : (
@@ -148,7 +157,7 @@ export default async function ProductsPage({
               Previous
             </Link>
           )}
-          <span className="font-semibold text-ink/60">
+          <span className="rounded-full bg-white px-4 py-2 font-bold text-ink/60 shadow">
             Page {page} of {pages}
           </span>
           {page < pages && (

@@ -111,8 +111,28 @@ export default function AdminProducts({
     }
   }
 
+  const lowStock = products.filter((p) => p.stock > 0 && p.stock <= 5).length;
+  const soldOut = products.filter((p) => p.stock === 0).length;
+
+  const stats = [
+    { label: "Products", value: products.length, color: "bg-lilac" },
+    { label: "Categories", value: categories.length, color: "bg-mint" },
+    { label: "Low stock", value: lowStock, color: "bg-sun" },
+    { label: "Sold out", value: soldOut, color: "bg-coral/40" },
+  ];
+
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        {stats.map((s) => (
+          <div key={s.label} className={`rounded-[1.5rem] p-5 shadow-lg ${s.color}`}>
+            <p className="text-xs font-bold uppercase tracking-wide text-ink/60">
+              {s.label}
+            </p>
+            <p className="font-display text-4xl font-semibold">{s.value}</p>
+          </div>
+        ))}
+      </div>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
@@ -136,7 +156,7 @@ export default function AdminProducts({
             <img
               src={p.imageUrl}
               alt={p.name}
-              className="h-14 w-14 shrink-0 rounded-xl border-2 border-ink object-cover"
+              className="h-14 w-14 shrink-0 rounded-2xl object-cover"
             />
             <div className="min-w-0 flex-1">
               <p className="font-display truncate font-bold">{p.name}</p>
@@ -182,7 +202,7 @@ export default function AdminProducts({
                 type="button"
                 onClick={() => setForm(null)}
                 aria-label="Close"
-                className="rounded-full border-2 border-ink bg-white p-1.5 hover:bg-sun"
+                className="rounded-full bg-lilac/40 p-1.5 hover:bg-sun"
               >
                 <X size={16} />
               </button>
@@ -274,7 +294,7 @@ export default function AdminProducts({
             </div>
 
             {error && (
-              <p className="rounded-xl border-2 border-ink bg-coral/15 px-3 py-2 text-sm font-semibold text-red-700">
+              <p className="rounded-2xl bg-coral/15 px-4 py-2 text-sm font-bold text-red-700">
                 {error}
               </p>
             )}

@@ -58,11 +58,11 @@ export default function CartView({ items }: { items: CartLine[] }) {
   if (items.length === 0) {
     return (
       <div className="card flex flex-col items-center gap-4 py-20 text-center">
-        <span className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-ink bg-lilac">
-          <ShoppingBag size={28} />
+        <span className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-lilac to-powder">
+          <ShoppingBag size={32} />
         </span>
         <div>
-          <h2 className="font-display text-2xl font-extrabold">
+          <h2 className="font-display text-3xl font-semibold">
             Your cart is empty
           </h2>
           <p className="mt-1 text-sm text-ink/60">
@@ -80,19 +80,19 @@ export default function CartView({ items }: { items: CartLine[] }) {
     <div className="grid gap-6 lg:grid-cols-3">
       <div className="space-y-4 lg:col-span-2">
         {error && (
-          <p className="rounded-xl border-2 border-ink bg-coral/15 px-3 py-2 text-sm font-semibold text-red-700">
+          <p className="rounded-2xl bg-coral/15 px-4 py-2 text-sm font-bold text-red-700">
             {error}
           </p>
         )}
 
-        <ul className="card divide-y-2 divide-ink/10">
+        <ul className="space-y-4">
           {items.map((i) => (
-            <li key={i.id} className="flex gap-4 p-4">
+            <li key={i.id} className="card flex gap-4 p-4">
               <Link href={`/products/${i.slug}`} className="shrink-0">
                 <img
                   src={i.imageUrl}
                   alt={i.name}
-                  className="h-24 w-24 rounded-xl border-2 border-ink object-cover"
+                  className="h-24 w-24 rounded-2xl object-cover"
                 />
               </Link>
 
@@ -101,7 +101,7 @@ export default function CartView({ items }: { items: CartLine[] }) {
                   <div className="min-w-0">
                     <Link
                       href={`/products/${i.slug}`}
-                      className="font-display line-clamp-1 text-lg font-bold hover:text-coral"
+                      className="font-display line-clamp-1 text-lg font-semibold hover:text-grape"
                     >
                       {i.name}
                     </Link>
@@ -109,23 +109,23 @@ export default function CartView({ items }: { items: CartLine[] }) {
                       {formatPrice(i.price)} each
                     </p>
                     {i.quantity >= i.stock && (
-                      <p className="text-xs font-semibold text-amber-700">
+                      <p className="text-xs font-bold text-amber-700">
                         Only {i.stock} in stock
                       </p>
                     )}
                   </div>
-                  <p className="font-display text-lg font-extrabold">
+                  <p className="font-display text-lg font-semibold">
                     {formatPrice(i.price * i.quantity)}
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1 rounded-full border-2 border-ink bg-white p-1">
+                  <div className="flex items-center gap-1 rounded-full bg-lilac/30 p-1">
                     <button
                       onClick={() => setQuantity(i.id, i.quantity - 1)}
                       disabled={i.quantity <= 1 || busyId === i.id}
                       aria-label="Decrease quantity"
-                      className="rounded-full p-1.5 transition hover:bg-sun disabled:opacity-30"
+                      className="rounded-full bg-white p-1.5 shadow transition hover:bg-sun disabled:opacity-30"
                     >
                       <Minus size={14} />
                     </button>
@@ -136,7 +136,7 @@ export default function CartView({ items }: { items: CartLine[] }) {
                       onClick={() => setQuantity(i.id, i.quantity + 1)}
                       disabled={i.quantity >= i.stock || busyId === i.id}
                       aria-label="Increase quantity"
-                      className="rounded-full p-1.5 transition hover:bg-sun disabled:opacity-30"
+                      className="rounded-full bg-white p-1.5 shadow transition hover:bg-sun disabled:opacity-30"
                     >
                       <Plus size={14} />
                     </button>
@@ -157,26 +157,31 @@ export default function CartView({ items }: { items: CartLine[] }) {
         </ul>
       </div>
 
-      <aside className="card h-fit space-y-4 bg-sun p-6">
-        <h2 className="font-display text-xl font-extrabold">Order summary</h2>
-        <div className="space-y-2 text-sm font-medium">
+      <aside className="relative h-fit space-y-4 overflow-hidden rounded-[2rem] bg-gradient-to-br from-grape via-[#a855f7] to-coral p-6 text-white shadow-xl">
+        <div className="float-slow absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/20" />
+        <h2 className="font-display relative text-2xl font-semibold">
+          Order summary
+        </h2>
+        <div className="relative space-y-2 text-sm font-semibold">
           <div className="flex justify-between">
             <span>Items ({count})</span>
             <span>{formatPrice(total)}</span>
           </div>
           <div className="flex justify-between">
             <span>Shipping</span>
-            <span className="font-bold">Free</span>
+            <span className="rounded-full bg-mint px-2 py-0.5 text-xs font-extrabold text-ink">
+              Free
+            </span>
           </div>
         </div>
-        <div className="font-display flex justify-between border-t-2 border-dashed border-ink pt-4 text-2xl font-extrabold">
+        <div className="font-display relative flex justify-between border-t-2 border-dashed border-white/40 pt-4 text-2xl font-semibold">
           <span>Total</span>
           <span>{formatPrice(total)}</span>
         </div>
-        <button disabled className="btn-primary w-full py-3">
+        <button disabled className="btn-light relative w-full py-3">
           Checkout
         </button>
-        <p className="text-center text-xs font-medium text-ink/60">
+        <p className="relative text-center text-xs font-semibold text-white/80">
           Checkout starts working in Stage 5.
         </p>
       </aside>

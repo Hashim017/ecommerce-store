@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ShoppingCart, Check } from "lucide-react";
+import { useAuth } from "@/components/AuthProvider";
 
 export default function AddToCartButton({
   productId,
@@ -14,13 +15,14 @@ export default function AddToCartButton({
   loggedIn: boolean;
 }) {
   const router = useRouter();
+  const { openLogin } = useAuth();
   const [loading, setLoading] = useState(false);
   const [added, setAdded] = useState(false);
   const [error, setError] = useState("");
 
   async function add() {
     if (!loggedIn) {
-      window.location.href = "/login";
+      openLogin();
       return;
     }
 

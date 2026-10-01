@@ -1,11 +1,14 @@
 import Link from "next/link";
-import { Store, ShoppingCart } from "lucide-react";
+import { Sparkles, ShoppingBag } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/currentUser";
 import LogoutButton from "@/components/LogoutButton";
+import LoginButton from "@/components/LoginButton";
+
+export const dynamic = "force-dynamic";
 
 const pill =
-  "rounded-full px-3 py-1.5 font-semibold text-ink transition hover:bg-ink hover:text-cream";
+  "rounded-full px-4 py-2 font-bold transition hover:bg-lilac/40 hover:text-grape";
 
 export default async function Navbar() {
   const user = await getCurrentUser();
@@ -20,14 +23,14 @@ export default async function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-30 border-b-2 border-ink bg-cream/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-10 w-10 -rotate-6 items-center justify-center rounded-xl border-2 border-ink bg-sun shadow-[2px_2px_0_#17151f]">
-            <Store size={20} />
+    <header className="sticky top-3 z-30 px-3 pt-3">
+      <div className="mx-auto flex max-w-5xl items-center justify-between rounded-full bg-white/80 px-3 py-2 shadow-[0_12px_30px_-12px_rgba(124,58,237,0.45)] backdrop-blur-md">
+        <Link href="/" className="flex items-center gap-2">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-grape to-coral text-white">
+            <Sparkles size={20} />
           </span>
-          <span className="font-display hidden text-2xl font-extrabold tracking-tight min-[400px]:inline">
-            ShopNest
+          <span className="font-display hidden text-2xl font-semibold min-[400px]:inline">
+            Shop<span className="text-coral">Nest</span>
           </span>
         </Link>
 
@@ -47,23 +50,17 @@ export default async function Navbar() {
           <Link
             href="/cart"
             aria-label="Cart"
-            className="relative ml-1 flex h-10 w-10 items-center justify-center rounded-full border-2 border-ink bg-white transition hover:bg-sun"
+            className="relative ml-1 flex h-10 w-10 items-center justify-center rounded-full bg-sun transition hover:scale-110"
           >
-            <ShoppingCart size={18} />
+            <ShoppingBag size={18} />
             {cartCount > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-ink bg-coral px-1 text-[11px] font-bold text-white">
+              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-coral px-1 text-[11px] font-bold text-white">
                 {cartCount}
               </span>
             )}
           </Link>
 
-          {user ? (
-            <LogoutButton />
-          ) : (
-            <Link href="/login" className="btn-primary ml-2 px-4 py-2">
-              Log in
-            </Link>
-          )}
+          {user ? <LogoutButton /> : <LoginButton />}
         </nav>
       </div>
     </header>
