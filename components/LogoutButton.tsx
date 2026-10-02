@@ -1,8 +1,11 @@
 "use client";
 
 import { LogOut } from "lucide-react";
+import { useDialog } from "@/components/DialogProvider";
 
 export default function LogoutButton() {
+  const { alertBox } = useDialog();
+
   async function logout() {
     const res = await fetch("/api/auth/logout", {
       method: "POST",
@@ -10,7 +13,11 @@ export default function LogoutButton() {
     });
 
     if (!res.ok) {
-      alert("Logout failed. Status: " + res.status);
+      await alertBox({
+        title: "Could not log out",
+        message: "Please try again in a moment.",
+        danger: true,
+      });
       return;
     }
 

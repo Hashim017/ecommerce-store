@@ -2,14 +2,22 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useDialog } from "@/components/DialogProvider";
 
 export default function CancelOrderButton({ orderId }: { orderId: string }) {
   const router = useRouter();
+  const { confirmBox } = useDialog();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   async function cancel() {
-    if (!confirm("Cancel this order?")) return;
+    const ok = await confirmBox({
+      title: "Cancel this order?",
+      message: "This cannot be undone.",
+      confirmText: "Yes, cancel it",
+      danger: true,
+    });
+    if (!ok) return;
 
     setLoading(true);
     setError("");

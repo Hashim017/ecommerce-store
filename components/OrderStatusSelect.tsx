@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { STATUS_STYLE } from "@/lib/orderStatus";
+import { useDialog } from "@/components/DialogProvider";
 
 export default function OrderStatusSelect({
   orderId,
@@ -12,6 +13,7 @@ export default function OrderStatusSelect({
   current: string;
 }) {
   const router = useRouter();
+  const { confirmBox } = useDialog();
   const [status, setStatus] = useState(current);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -21,11 +23,14 @@ export default function OrderStatusSelect({
   async function save() {
     if (status === current) return;
 
-    if (
-      status === "CANCELLED" &&
-      !confirm("Cancel this order? The stock will go back to the products.")
-    ) {
-      return;
+    if (status === "CANCELLED") {
+      const ok = await confirmBox({
+        title: "Cancel this order?",
+        message: "The stock will go back to the products.",
+        confirmText: "Yes, cancel it",
+        danger: true,
+      });
+      if (!ok) return;
     }
 
     setLoading(true);

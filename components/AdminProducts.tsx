@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Plus, Pencil, Trash2, X } from "lucide-react";
 import { formatPrice } from "@/lib/format";
+import { useDialog } from "@/components/DialogProvider";
 
 export type AdminProduct = {
   id: string;
@@ -38,6 +39,7 @@ export default function AdminProducts({
   categories: AdminCategory[];
 }) {
   const router = useRouter();
+  const { confirmBox, alertBox } = useDialog();
   const [form, setForm] = useState<FormState | null>(null);
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
@@ -101,13 +103,24 @@ export default function AdminProducts({
   }
 
   async function remove(p: AdminProduct) {
-    if (!confirm(`Delete "${p.name}"?`)) return;
+    const ok = await confirmBox({
+      title: `Delete "${p.name}"?`,
+      message: "This product will be removed from the store.",
+      confirmText: "Yes, delete",
+      danger: true,
+    });
+    if (!ok) return;
+
     const res = await fetch(`/api/products/${p.id}`, { method: "DELETE" });
     if (res.ok) {
       router.refresh();
     } else {
       const data = await res.json().catch(() => ({}));
-      alert(data.error ?? "Could not delete");
+      await alertBox({
+        title: "Could not delete",
+        message: data.error ?? "Something went wrong.",
+        danger: true,
+      });
     }
   }
 
