@@ -136,7 +136,7 @@ export default function AdminProducts({
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Manage products
+            Inventory
           </h1>
           <p className="mt-1 text-sm text-ink/60">
             {products.length} products in your store.

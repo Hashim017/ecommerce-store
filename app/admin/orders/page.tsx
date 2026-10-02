@@ -36,10 +36,9 @@ export default async function AdminOrdersPage({
   ];
 
   const chip = (active: boolean) =>
-    `rounded-full px-4 py-2 text-sm font-bold shadow transition hover:scale-105 ${
-      active
-        ? "bg-gradient-to-r from-grape to-coral text-white"
-        : "bg-white hover:bg-lilac/40"
+    `rounded-full px-4 py-2 text-sm font-bold shadow transition hover:scale-105 ${active
+      ? "bg-gradient-to-r from-grape to-coral text-white"
+      : "bg-white hover:bg-lilac/40"
     }`;
 
   return (
@@ -52,7 +51,7 @@ export default async function AdminOrdersPage({
           </span>
         </h1>
         <Link href="/admin" className="btn-light">
-          Manage products
+          Inventory
         </Link>
       </div>
 

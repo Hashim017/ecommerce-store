@@ -43,7 +43,7 @@ export default async function Navbar() {
             </Link>
           )}
           <Link href="/products" className={pill}>
-            Products
+            {isAdmin ? "Store" : "Products"}
           </Link>
 
           {isCustomer && (
@@ -60,7 +60,7 @@ export default async function Navbar() {
           {isAdmin && (
             <>
               <Link href="/admin" className={pill}>
-                Admin
+                Inventory
               </Link>
               <Link href="/admin/orders" className={pill}>
                 Sales
