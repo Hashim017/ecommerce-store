@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/currentUser";
 import { formatPrice } from "@/lib/format";
 import { statusStyle, formatDate } from "@/lib/orderStatus";
+import CancelOrderButton from "@/components/CancelOrderButton";
 
 export const dynamic = "force-dynamic";
 
@@ -117,6 +118,10 @@ export default async function OrderPage({
               <span>{formatPrice(Number(order.total))}</span>
             </div>
           </div>
+
+          {order.status === "PENDING" && (
+            <CancelOrderButton orderId={order.id} />
+          )}
         </aside>
       </div>
     </div>

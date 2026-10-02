@@ -60,17 +60,16 @@ export default function LoginForm({
   }
 
   const tab = (active: boolean) =>
-    `flex-1 rounded-full py-2 text-sm font-extrabold transition ${
-      active ? "bg-white text-grape shadow" : "text-ink/60 hover:text-ink"
+    `flex-1 rounded-full py-2 text-sm font-extrabold transition ${active ? "bg-white text-grape shadow" : "text-ink/60 hover:text-ink"
     }`;
 
   const content = (
     <>
       <div className="mb-5 flex flex-col items-center text-center">
-        <span className="mb-3 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-gradient-to-br from-grape to-coral text-white shadow-lg">
+        <span className="mb-2 flex h-12 w-12 items-center justify-center rounded-full border-4 border-white bg-gradient-to-br from-grape to-coral text-white shadow-lg sm:mb-3 sm:h-16 sm:w-16">
           <Sparkles size={26} />
         </span>
-        <h1 className="font-display text-3xl font-semibold">
+        <h1 className="font-display text-2xl font-semibold sm:text-3xl">
           {isLogin ? "Welcome back" : "Join ShopNest"}
         </h1>
         <p className="mt-1 text-sm text-ink/60">
@@ -87,7 +86,7 @@ export default function LoginForm({
         </button>
       </div>
 
-      <form onSubmit={submit} className="space-y-4">
+      <form onSubmit={submit} className="space-y-3 sm:space-y-4">
         {!isLogin && (
           <div>
             <label className="mb-1 block text-sm font-bold">Name</label>
