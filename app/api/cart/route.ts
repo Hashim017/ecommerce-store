@@ -28,6 +28,9 @@ export async function POST(request: Request) {
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+  if (user.role === "ADMIN") {
+    return NextResponse.json({ error: "Admins cannot shop" }, { status: 403 });
+  }
 
   const body = await request.json().catch(() => null);
   const productId = String(body?.productId ?? "");
