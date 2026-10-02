@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { seedMoreProducts } from "./seed-more";
 
 const prisma = new PrismaClient();
 
@@ -76,7 +77,7 @@ async function main() {
       },
     });
   }
-
+  await seedMoreProducts(prisma);
   console.log("Seed done");
 }
 
