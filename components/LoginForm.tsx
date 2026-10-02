@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Sparkles } from "lucide-react";
+import PasswordInput from "@/components/PasswordInput";
 
 type Mode = "login" | "register";
 
@@ -111,13 +112,11 @@ export default function LoginForm({
         </div>
         <div>
           <label className="mb-1 block text-sm font-bold">Password</label>
-          <input
-            required
-            type="password"
+          <PasswordInput
             minLength={isLogin ? undefined : 8}
+            autoComplete={isLogin ? "current-password" : "new-password"}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="input"
+            onChange={setPassword}
           />
           {!isLogin && (
             <p className="mt-1 text-xs font-semibold text-ink/50">
@@ -128,12 +127,10 @@ export default function LoginForm({
         {!isLogin && (
           <div>
             <label className="mb-1 block text-sm font-bold">Confirm password</label>
-            <input
-              required
-              type="password"
+            <PasswordInput
+              autoComplete="new-password"
               value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
-              className="input"
+              onChange={setConfirm}
             />
           </div>
         )}
