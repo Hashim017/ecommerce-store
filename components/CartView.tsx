@@ -178,11 +178,11 @@ export default function CartView({ items }: { items: CartLine[] }) {
           <span>Total</span>
           <span>{formatPrice(total)}</span>
         </div>
-        <button disabled className="btn-light relative w-full py-3">
+        <Link href="/checkout" className="btn-light relative w-full py-3">
           Checkout
-        </button>
+        </Link>
         <p className="relative text-center text-xs font-semibold text-white/80">
-          Checkout starts working in Stage 5.
+          Pay with cash when your order arrives.
         </p>
       </aside>
     </div>

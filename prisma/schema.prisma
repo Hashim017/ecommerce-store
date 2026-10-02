@@ -71,6 +71,9 @@ model Order {
   total     Decimal     @db.Decimal(10, 2)
   status    OrderStatus @default(PENDING)
   address   String
+  fullName  String      @default("")
+  phone     String      @default("")
+  city      String      @default("")
   createdAt DateTime    @default(now())
   userId    String
   user      User        @relation(fields: [userId], references: [id])
@@ -84,6 +87,7 @@ model OrderItem {
   name      String
   price     Decimal @db.Decimal(10, 2)
   quantity  Int
+  imageUrl  String  @default("")
   orderId   String
   productId String
   order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
