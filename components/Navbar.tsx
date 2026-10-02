@@ -49,9 +49,14 @@ export default async function Navbar() {
             </>
           )}
           {user?.role === "ADMIN" && (
-            <Link href="/admin" className={pill}>
-              Admin
-            </Link>
+            <>
+              <Link href="/admin" className={pill}>
+                Admin
+              </Link>
+              <Link href="/admin/orders" className={`${pill} hidden md:block`}>
+                Sales
+              </Link>
+            </>
           )}
 
           <Link
