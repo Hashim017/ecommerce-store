@@ -12,9 +12,11 @@ const pill =
 
 export default async function Navbar() {
   const user = await getCurrentUser();
+  const isAdmin = user?.role === "ADMIN";
+  const isCustomer = !!user && !isAdmin;
 
   let cartCount = 0;
-  if (user) {
+  if (isCustomer) {
     const sum = await prisma.cartItem.aggregate({
       where: { userId: user.id },
       _sum: { quantity: true },
@@ -35,10 +37,16 @@ export default async function Navbar() {
         </Link>
 
         <nav className="flex items-center gap-1 text-sm">
-          <Link href="/" className={`${pill} hidden sm:block`}>
-            Home
+          {!isAdmin && (
+            <Link href="/" className={`${pill} hidden sm:block`}>
+              Home
+            </Link>
+          )}
+          <Link href="/products" className={pill}>
+            Products
           </Link>
-          {user && (
+
+          {isCustomer && (
             <>
               <Link href="/orders" className={pill}>
                 Orders
@@ -48,29 +56,32 @@ export default async function Navbar() {
               </Link>
             </>
           )}
-          {user?.role === "ADMIN" && (
+
+          {isAdmin && (
             <>
               <Link href="/admin" className={pill}>
                 Admin
               </Link>
-              <Link href="/admin/orders" className={`${pill} hidden md:block`}>
+              <Link href="/admin/orders" className={pill}>
                 Sales
               </Link>
             </>
           )}
 
-          <Link
-            href="/cart"
-            aria-label="Cart"
-            className="relative ml-1 flex h-10 w-10 items-center justify-center rounded-full bg-sun transition hover:scale-110"
-          >
-            <ShoppingBag size={18} />
-            {cartCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-coral px-1 text-[11px] font-bold text-white">
-                {cartCount}
-              </span>
-            )}
-          </Link>
+          {!isAdmin && (
+            <Link
+              href="/cart"
+              aria-label="Cart"
+              className="relative ml-1 flex h-10 w-10 items-center justify-center rounded-full bg-sun transition hover:scale-110"
+            >
+              <ShoppingBag size={18} />
+              {cartCount > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-coral px-1 text-[11px] font-bold text-white">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+          )}
 
           {user ? <LogoutButton /> : <LoginButton />}
         </nav>

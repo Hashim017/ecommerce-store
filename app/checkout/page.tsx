@@ -1,12 +1,12 @@
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { requireUser } from "@/lib/currentUser";
+import { requireCustomer } from "@/lib/currentUser";
 import CheckoutForm from "@/components/CheckoutForm";
 
 export const dynamic = "force-dynamic";
 
 export default async function CheckoutPage() {
-  const user = await requireUser();
+  const user = await requireCustomer();
 
   const cart = await prisma.cartItem.findMany({
     where: { userId: user.id },

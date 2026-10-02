@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, PartyPopper } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { requireUser } from "@/lib/currentUser";
+import { requireCustomer } from "@/lib/currentUser";
 import { formatPrice } from "@/lib/format";
 import { statusStyle, formatDate } from "@/lib/orderStatus";
 import CancelOrderButton from "@/components/CancelOrderButton";
@@ -16,7 +16,7 @@ export default async function OrderPage({
   params: Promise<{ id: string }>;
   searchParams: Promise<{ placed?: string }>;
 }) {
-  const user = await requireUser();
+  const user = await requireCustomer();
   const { id } = await params;
   const sp = await searchParams;
 

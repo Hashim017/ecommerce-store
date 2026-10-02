@@ -2,12 +2,15 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/currentUser";
 
-class CheckoutError extends Error {}
+class CheckoutError extends Error { }
 
 export async function POST(request: Request) {
   const user = await getCurrentUser();
   if (!user) {
     return NextResponse.json({ error: "Please log in" }, { status: 401 });
+  }
+  if (user.role === "ADMIN") {
+    return NextResponse.json({ error: "Admins cannot shop" }, { status: 403 });
   }
 
   const body = await request.json().catch(() => null);

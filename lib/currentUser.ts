@@ -20,3 +20,10 @@ export async function requireAdmin() {
   if (user.role !== "ADMIN") redirect("/");
   return user;
 }
+
+export async function requireCustomer() {
+  const user = await getCurrentUser();
+  if (!user) redirect("/login");
+  if (user.role === "ADMIN") redirect("/admin");
+  return user;
+}

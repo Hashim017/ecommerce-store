@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Package, ShoppingBag } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { requireUser } from "@/lib/currentUser";
+import { requireCustomer } from "@/lib/currentUser";
 import { formatPrice } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
 export default async function AccountPage() {
-  const user = await requireUser();
+  const user = await requireCustomer();
 
   const stats = await prisma.order.aggregate({
     where: { userId: user.id },

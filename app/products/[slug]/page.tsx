@@ -81,11 +81,13 @@ export default async function ProductPage({
             {product.description}
           </p>
 
-          <AddToCartButton
-            productId={product.id}
-            soldOut={soldOut}
-            loggedIn={!!user}
-          />
+          {user?.role !== "ADMIN" && (
+            <AddToCartButton
+              productId={product.id}
+              soldOut={soldOut}
+              loggedIn={!!user}
+            />
+          )}
 
           <p className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-ink/70 shadow">
             <Truck size={16} /> Free shipping on every order

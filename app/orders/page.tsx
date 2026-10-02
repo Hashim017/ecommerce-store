@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { Package } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { requireUser } from "@/lib/currentUser";
+import { requireCustomer } from "@/lib/currentUser";
 import { formatPrice } from "@/lib/format";
 import { statusStyle, formatDate } from "@/lib/orderStatus";
 
 export const dynamic = "force-dynamic";
 
 export default async function OrdersPage() {
-  const user = await requireUser();
+  const user = await requireCustomer();
 
   const orders = await prisma.order.findMany({
     where: { userId: user.id },
