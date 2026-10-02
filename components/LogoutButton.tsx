@@ -3,7 +3,7 @@
 import { LogOut } from "lucide-react";
 import { useDialog } from "@/components/DialogProvider";
 
-export default function LogoutButton() {
+export default function LogoutButton({ full = false }: { full?: boolean }) {
   const { alertBox } = useDialog();
 
   async function logout() {
@@ -31,7 +31,7 @@ export default function LogoutButton() {
       className="ml-2 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-coral to-sun px-5 py-2 text-sm font-extrabold text-ink shadow-[0_8px_20px_-6px_rgba(255,93,143,0.6)] transition hover:-translate-y-0.5 hover:scale-105 active:scale-95"
     >
       <LogOut size={16} />
-      <span className="hidden sm:inline">Log out</span>
+      <span className={full ? "" : "hidden sm:inline"}>Log out</span>
     </button>
   );
 }
