@@ -152,8 +152,8 @@ The application is fully responsive and optimized for desktop and mobile devices
 ## ⚙️ Getting Started
 
 ```bash
-git clone https://github.com/Hashim017/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/Hashim017/ecommerce-store.git
+cd ecommerce-store
 npm install
 ```
 
