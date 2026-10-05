@@ -44,7 +44,7 @@ New sign-ups are always customers. There is only one admin account.
 ### Landing Page
 
 #### Landing Page
-![Landing Page](docs/screenshots/landing-page.png)
+![Landing Page](docs/screenshots/landing-page.PNG)
 
 #### Landing Page - Section 2
 ![Landing Page 2](docs/screenshots/landing-page2.png)
