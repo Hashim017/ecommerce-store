@@ -44,76 +44,76 @@ New sign-ups are always customers. There is only one admin account.
 ### Landing Page
 
 #### Landing Page
-![Landing Page](docs/screenshots/landing-page.PNG)
+<img src="docs/screenshots/landing-page.PNG" alt="Landing Page" width="600">
 
 #### Landing Page - Section 2
-![Landing Page 2](docs/screenshots/landing-page2.PNG)
+<img src="docs/screenshots/landing-page2.PNG" alt="Landing Page 2" width="600">
 
 #### Landing Page - Section 3
-![Landing Page 3](docs/screenshots/landing-page3.PNG)
+<img src="docs/screenshots/landing-page3.PNG" alt="Landing Page 3" width="600">
 
 
 ### Product Browsing
 
 #### Browse Products
-![Browse Products](docs/screenshots/browse-products-page.PNG)
+<img src="docs/screenshots/browse-products-page.png" alt="Browse Products" width="600">
 
 #### Products Pagination
-![Products Pagination](docs/screenshots/products-page-pagination.PNG)
+<img src="docs/screenshots/products-page-pagination.PNG" alt="Products Pagination" width="600">
 
 #### Product Details
-![Product Details](docs/screenshots/product-details-page.PNG)
+<img src="docs/screenshots/product-details-page.png" alt="Product Details" width="600">
 
 
 ### Authentication
 
 #### Register / Login
-![Register Login Popup](docs/screenshots/register-login-popup.PNG)
+<img src="docs/screenshots/register-login-popup.png" alt="Register Login Popup" width="600">
 
 
 ### Checkout
 
 #### Checkout Page
-![Checkout Page](docs/screenshots/checkout-page.PNG)
+<img src="docs/screenshots/checkout-page.PNG" alt="Checkout Page" width="600">
 
 #### Delivery Details
-![Checkout Delivery Details](docs/screenshots/checkout-delivery-details.PNG)
+<img src="docs/screenshots/checkout-delivery-details.PNG" alt="Checkout Delivery Details" width="600">
 
 
 ### User Dashboard
 
 #### User Dashboard
-![User Dashboard](docs/screenshots/user-dashboard.PNG)
+<img src="docs/screenshots/user-dashboard.PNG" alt="User Dashboard" width="600">
 
 #### User Dashboard - Alternative View
-![User Dashboard 2](docs/screenshots/user-dashboard2.PNG)
+<img src="docs/screenshots/user-dashboard2.png" alt="User Dashboard 2" width="600">
 
 #### User Orders
-![User Orders](docs/screenshots/user-orders-page.PNG)
+<img src="docs/screenshots/user-orders-page.PNG" alt="User Orders" width="600">
 
 
 ### Admin Dashboard
 
 #### Admin Dashboard
-![Admin Dashboard](docs/screenshots/admin-dashboard.PNG)
+<img src="docs/screenshots/admin-dashboard.PNG" alt="Admin Dashboard" width="600">
 
 #### Manage Orders
-![Admin Manage Orders](docs/screenshots/admin-manage-orders-page.PNG)
+<img src="docs/screenshots/admin-manage-orders-page.PNG" alt="Admin Manage Orders" width="600">
 
 #### Confirm Order
-![Admin Confirm Order](docs/screenshots/admin-confirm-order-page.PNG)
+<img src="docs/screenshots/admin-confirm-order-page.PNG" alt="Admin Confirm Order" width="600">
 
 #### Update Product
-![Update Product](docs/screenshots/update-product-popup.PNG)
+<img src="docs/screenshots/update-product-popup.png" alt="Update Product" width="600">
 
 #### Remove Product
-![Remove Product](docs/screenshots/remove-product-popup.PNG)
+<img src="docs/screenshots/remove-product-popup.png" alt="Remove Product" width="600">
 
 
 ### UI & Loading
 
 #### Loading Animation
-![Loading Animation](docs/screenshots/loading-animation.PNG)
+<img src="docs/screenshots/loading-animation.PNG" alt="Loading Animation" width="600">
 
 
 ## Responsive Design
@@ -122,32 +122,32 @@ The application is fully responsive and optimized for desktop and mobile devices
 
 ### Mobile Landing Page
 
-![Landing Page Mobile](docs/screenshots/landing-page-mobile.PNG)
+<img src="docs/screenshots/landing-page-mobile.PNG" alt="Landing Page Mobile" width="300">
 
-![Landing Page Mobile 2](docs/screenshots/landing-page-mobile2.PNG)
+<img src="docs/screenshots/landing-page-mobile2.PNG" alt="Landing Page Mobile 2" width="300">
 
-![Landing Page Mobile 3](docs/screenshots/landing-page-mobile3.PNG)
+<img src="docs/screenshots/landing-page-mobile3.PNG" alt="Landing Page Mobile 3" width="300">
 
 
 ### Mobile Product Browsing
 
-![Browse Products Mobile](docs/screenshots/browse-products-page-mobile.PNG)
+<img src="docs/screenshots/browse-products-page-mobile.PNG" alt="Browse Products Mobile" width="300">
 
 
 ### Mobile Product Details
 
-![Product Details Mobile](docs/screenshots/product-details-page-mobile.PNG)
+<img src="docs/screenshots/product-details-page-mobile.PNG" alt="Product Details Mobile" width="300">
 
-![Product Details Mobile 2](docs/screenshots/product-details-page-mobile2.PNG)
+<img src="docs/screenshots/product-details-page-mobile2.PNG" alt="Product Details Mobile 2" width="300">
 
 
 ### Mobile Checkout
 
-![Checkout Mobile](docs/screenshots/checkout-page-mobile.PNG)
+<img src="docs/screenshots/checkout-page-mobile.PNG" alt="Checkout Mobile" width="300">
 
-![Checkout Mobile 2](docs/screenshots/checkout-page-mobile2.PNG)
+<img src="docs/screenshots/checkout-page-mobile2.PNG" alt="Checkout Mobile 2" width="300">
 
-![Checkout Mobile 3](docs/screenshots/checkout-page-mobile3.PNG)
+<img src="docs/screenshots/checkout-page-mobile3.PNG" alt="Checkout Mobile 3" width="300">
 
 ## ⚙️ Getting Started
 
