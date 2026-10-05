@@ -39,7 +39,7 @@ ShopNest is a full e-commerce site. Customers can browse products, fill a cart, 
 
 New sign-ups are always customers. There is only one admin account.
 
-## Screenshots
+## 🖼 Screenshots
 
 ### Landing Page
 
