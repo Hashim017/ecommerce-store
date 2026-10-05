@@ -47,73 +47,73 @@ New sign-ups are always customers. There is only one admin account.
 ![Landing Page](docs/screenshots/landing-page.PNG)
 
 #### Landing Page - Section 2
-![Landing Page 2](docs/screenshots/landing-page2.png)
+![Landing Page 2](docs/screenshots/landing-page2.PNG)
 
 #### Landing Page - Section 3
-![Landing Page 3](docs/screenshots/landing-page3.png)
+![Landing Page 3](docs/screenshots/landing-page3.PNG)
 
 
 ### Product Browsing
 
 #### Browse Products
-![Browse Products](docs/screenshots/browse-products-page.png)
+![Browse Products](docs/screenshots/browse-products-page.PNG)
 
 #### Products Pagination
-![Products Pagination](docs/screenshots/products-page-pagination.png)
+![Products Pagination](docs/screenshots/products-page-pagination.PNG)
 
 #### Product Details
-![Product Details](docs/screenshots/product-details-page.png)
+![Product Details](docs/screenshots/product-details-page.PNG)
 
 
 ### Authentication
 
 #### Register / Login
-![Register Login Popup](docs/screenshots/register-login-popup.png)
+![Register Login Popup](docs/screenshots/register-login-popup.PNG)
 
 
 ### Checkout
 
 #### Checkout Page
-![Checkout Page](docs/screenshots/checkout-page.png)
+![Checkout Page](docs/screenshots/checkout-page.PNG)
 
 #### Delivery Details
-![Checkout Delivery Details](docs/screenshots/checkout-delivery-details.png)
+![Checkout Delivery Details](docs/screenshots/checkout-delivery-details.PNG)
 
 
 ### User Dashboard
 
 #### User Dashboard
-![User Dashboard](docs/screenshots/user-dashboard.png)
+![User Dashboard](docs/screenshots/user-dashboard.PNG)
 
 #### User Dashboard - Alternative View
-![User Dashboard 2](docs/screenshots/user-dashboard2.png)
+![User Dashboard 2](docs/screenshots/user-dashboard2.PNG)
 
 #### User Orders
-![User Orders](docs/screenshots/user-orders-page.png)
+![User Orders](docs/screenshots/user-orders-page.PNG)
 
 
 ### Admin Dashboard
 
 #### Admin Dashboard
-![Admin Dashboard](docs/screenshots/admin-dashboard.png)
+![Admin Dashboard](docs/screenshots/admin-dashboard.PNG)
 
 #### Manage Orders
-![Admin Manage Orders](docs/screenshots/admin-manage-orders-page.png)
+![Admin Manage Orders](docs/screenshots/admin-manage-orders-page.PNG)
 
 #### Confirm Order
-![Admin Confirm Order](docs/screenshots/admin-confirm-order-page.png)
+![Admin Confirm Order](docs/screenshots/admin-confirm-order-page.PNG)
 
 #### Update Product
-![Update Product](docs/screenshots/update-product-popup.png)
+![Update Product](docs/screenshots/update-product-popup.PNG)
 
 #### Remove Product
-![Remove Product](docs/screenshots/remove-product-popup.png)
+![Remove Product](docs/screenshots/remove-product-popup.PNG)
 
 
 ### UI & Loading
 
 #### Loading Animation
-![Loading Animation](docs/screenshots/loading-animation.png)
+![Loading Animation](docs/screenshots/loading-animation.PNG)
 
 
 ## Responsive Design
@@ -122,32 +122,32 @@ The application is fully responsive and optimized for desktop and mobile devices
 
 ### Mobile Landing Page
 
-![Landing Page Mobile](docs/screenshots/landing-page-mobile.png)
+![Landing Page Mobile](docs/screenshots/landing-page-mobile.PNG)
 
-![Landing Page Mobile 2](docs/screenshots/landing-page-mobile2.png)
+![Landing Page Mobile 2](docs/screenshots/landing-page-mobile2.PNG)
 
-![Landing Page Mobile 3](docs/screenshots/landing-page-mobile3.png)
+![Landing Page Mobile 3](docs/screenshots/landing-page-mobile3.PNG)
 
 
 ### Mobile Product Browsing
 
-![Browse Products Mobile](docs/screenshots/browse-products-page-mobile.png)
+![Browse Products Mobile](docs/screenshots/browse-products-page-mobile.PNG)
 
 
 ### Mobile Product Details
 
-![Product Details Mobile](docs/screenshots/product-details-page-mobile.png)
+![Product Details Mobile](docs/screenshots/product-details-page-mobile.PNG)
 
-![Product Details Mobile 2](docs/screenshots/product-details-page-mobile2.png)
+![Product Details Mobile 2](docs/screenshots/product-details-page-mobile2.PNG)
 
 
 ### Mobile Checkout
 
-![Checkout Mobile](docs/screenshots/checkout-page-mobile.png)
+![Checkout Mobile](docs/screenshots/checkout-page-mobile.PNG)
 
-![Checkout Mobile 2](docs/screenshots/checkout-page-mobile2.png)
+![Checkout Mobile 2](docs/screenshots/checkout-page-mobile2.PNG)
 
-![Checkout Mobile 3](docs/screenshots/checkout-page-mobile3.png)
+![Checkout Mobile 3](docs/screenshots/checkout-page-mobile3.PNG)
 
 ## ⚙️ Getting Started
 
